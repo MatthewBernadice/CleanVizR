@@ -1,0 +1,50 @@
+# Install required packages if not installed
+if (!requireNamespace("devtools", quietly = TRUE)) install.packages("devtools")
+if (!requireNamespace("usethis", quietly = TRUE)) install.packages("usethis")
+if (!requireNamespace("desc", quietly = TRUE)) install.packages("desc")
+
+library(devtools)
+library(usethis)
+library(desc)
+
+# 1. Create the package skeleton
+pkg_name <- "CleanVizR" 
+create_package(path = pkg_name)
+
+# 2. Navigate into package folder
+setwd("C:/CleanVizR")
+
+# 3. Initialize DESCRIPTION file using desc
+desc::desc_create(pkg = pkg_name)
+
+# 4. Edit DESCRIPTION fields
+d <- desc::description$new("DESCRIPTION")
+
+# Set package metadata
+d$set("Package", pkg_name)
+d$set("Title", "Data Cleaning and Custom Plotting Utilities")
+d$set("Version", "0.0.0.9000")
+d$set_authors(c(
+  person("Matthew", "Bernadice", email = "kgarscoza@gmailcom", role = c("aut", "cre"))
+))
+d$set("Description", "CleanVizR is a beginner-friendly R package
+      providing helper functions for common data cleaning tasks 
+      and consistent, easy-to-use visualizations for 
+      exploratory data analysis.")
+d$set("Depends", "R (>= 3.1.2)")
+d$set("Imports", "ggplot2, dplyr")  # Add more packages if needed
+d$set("License", "CC0")
+d$set("LazyData", "true")
+
+# Write changes to DESCRIPTION
+d$write(file = "DESCRIPTION")
+
+cat("Package skeleton created and DESCRIPTION updated successfully in folder:", getwd(), "\n\n")
+
+# 5. Verify the package (run checks)
+check(pkg = ".")  # will report any warnings, errors, or notes
+
+# 6. Build the package
+build(path = "../")  # builds package tarball one level up
+
+cat("\nPackage check and build complete. Check the parent directory for the built package tar.gz file.\n")
