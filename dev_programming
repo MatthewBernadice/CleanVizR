@@ -23,9 +23,9 @@ d <- desc::description$new("DESCRIPTION")
 # Set package metadata
 d$set("Package", pkg_name)
 d$set("Title", "Data Cleaning and Custom Plotting Utilities")
-d$set("Version", "0.0.0.9000")
+d$set("Version", "1.0.0")
 d$set_authors(c(
-  person("Matthew", "Bernadice", email = "kgarscoza@gmailcom", role = c("aut", "cre"))
+  person("Matthew", "Bernadice", email = "kgarscoza@gmail.com", role = c("aut", "cre"))
 ))
 d$set("Description", "CleanVizR is a beginner-friendly R package
       providing helper functions for common data cleaning tasks 
